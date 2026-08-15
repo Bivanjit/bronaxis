@@ -84,3 +84,304 @@ h1,h2,h3{font-weight:700}
   .wf-card{width:auto;padding:15px}.wf-arrow{display:none}.board-footer{gap:8px;flex-wrap:wrap}
   .data-packets{display:none}.cta-card{padding:36px 25px;display:block}.cta-card h2{font-size:40px}.cta-card .btn{margin-top:18px;width:100%}
 }
+
+/* =========================
+   FINAL POLISH / MOBILE FIX
+   ========================= */
+:root{--display:"Plus Jakarta Sans",sans-serif;--body:"Manrope",sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:#f7fbff}
+h1,h2,h3,.brand strong,.eyebrow,.btn,.tag,.catalog-number,.status,.board-label,.live-head b{font-family:var(--display)!important}
+h1{font-weight:800;letter-spacing:-.055em}
+h2{font-weight:800;letter-spacing:-.045em}
+h3{font-weight:700}
+
+/* Opaque, glassy sticky header: hero text can never visually bleed through it. */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(249,252,255,.91);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:0 1px 0 rgba(19,38,68,.06),0 8px 30px rgba(32,57,93,.04);
+}
+.nav:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),#77e6d1,transparent);opacity:.42}
+.nav .brand{flex-shrink:0}
+.nav .links{flex-wrap:nowrap}
+.nav .nav-cta{white-space:nowrap}
+
+/* Keep the hero visually self-contained. */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(70,128,255,.10),transparent 34%),
+    radial-gradient(circle at 88% 55%,rgba(36,207,190,.09),transparent 31%),
+    #f7fbff;
+}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(247,251,255,.96));pointer-events:none}
+.hero-copy{position:relative;z-index:5}
+.hero-copy h1{max-width:760px}
+.hero-text{max-width:660px}
+.hero-visual{z-index:2}
+
+/* Prevent visual cards from crossing the hero boundary. */
+.hero-visual,.portrait-card,.live-automation,.floating-card{isolation:isolate}
+.portrait-card{z-index:3}
+.live-automation{z-index:5}
+.floating-card{z-index:6}
+
+/* Strong section separation so stacked sections never visually merge. */
+.problem-section,.automation-showcase,.business-section,.final-cta,.contact-section,.work-section,.catalogue-section{position:relative;isolation:isolate}
+.problem-section{background:#fff}
+.automation-showcase{background:#f4fbff}
+.business-section{background:#fff}
+.final-cta{background:#fff}
+.contact-section{background:#f7fbff}
+
+/* Mobile: designed as a first-class layout, not a shrunken desktop. */
+@media (max-width:700px){
+  .nav{
+    padding:11px 14px;
+    min-height:64px;
+  }
+  .brand{gap:8px}
+  .brand-mark{width:36px;height:36px;border-radius:11px}
+  .brand strong{font-size:12px}
+  .brand small{font-size:7px;letter-spacing:.12em}
+  .menu{
+    display:grid;
+    place-items:center;
+    width:40px;height:40px;
+    border-radius:12px;
+    color:#172033;
+    background:rgba(255,255,255,.75);
+    border:1px solid rgba(25,45,75,.08);
+  }
+  .links{
+    top:70px!important;
+    left:12px!important;
+    right:12px!important;
+    padding:10px!important;
+    gap:3px!important;
+    background:rgba(250,252,255,.97)!important;
+    backdrop-filter:blur(18px);
+    border-radius:18px!important;
+    box-shadow:0 18px 50px rgba(29,51,86,.14)!important;
+  }
+  .links a{
+    padding:13px 14px;
+    border-radius:11px;
+  }
+  .links .nav-cta{text-align:center;margin-top:4px}
+
+  .hero{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    min-height:auto;
+    padding:62px 0 62px;
+    overflow:hidden;
+  }
+  .hero-copy{
+    width:100%;
+    padding:0 14px;
+  }
+  .eyebrow{font-size:9px;letter-spacing:.13em;margin-bottom:13px}
+  h1{
+    font-size:clamp(43px,13.2vw,62px)!important;
+    line-height:.98!important;
+    letter-spacing:-.06em!important;
+    max-width:100%!important;
+    overflow-wrap:normal;
+  }
+  .hero-text{
+    font-size:15px;
+    line-height:1.65;
+    margin:22px 0 18px;
+    max-width:100%;
+  }
+  .hero-pills{gap:7px;margin-top:12px}
+  .hero-pills span{font-size:9px;padding:7px 9px}
+  .actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+  .actions .btn{width:100%;padding:14px 10px;font-size:12px}
+  .proof-row{display:none}
+  .hero-note{font-size:10px;margin-top:18px}
+
+  .hero-visual{
+    width:100%;
+    min-height:520px;
+    margin-top:28px;
+    display:block;
+  }
+  .hero-glow{width:330px;height:330px;left:50%;top:60px;transform:translateX(-50%)}
+  .portrait-card{
+    width:min(78vw,350px);
+    margin:0 auto;
+    aspect-ratio:4/5;
+    transform:rotate(1deg);
+  }
+  .portrait-label{left:12px;right:12px;bottom:12px;padding:10px 11px}
+  .portrait-label b{font-size:11px}
+  .portrait-label small{font-size:9px}
+  .location-card{
+    right:3%!important;
+    top:315px!important;
+    bottom:auto!important;
+    transform:scale(.86);
+    transform-origin:right top;
+  }
+  .live-automation{
+    left:3%!important;
+    right:3%!important;
+    bottom:0!important;
+    width:auto!important;
+    padding:12px!important;
+    border-radius:16px;
+  }
+  .live-track{height:60px}
+  .live-node{width:43px;height:43px;border-radius:12px;font-size:7px}
+  .live-status{font-size:8px;white-space:nowrap}
+
+  .ticker{overflow:hidden}
+  .ticker span{font-size:8px;padding-inline:12px}
+
+  .section{padding:78px 0}
+  .section-head{
+    display:block;
+    margin-bottom:28px;
+  }
+  .section-head h2{
+    font-size:clamp(35px,10.5vw,50px)!important;
+    line-height:1.04;
+  }
+  .section-head>p{font-size:13px;line-height:1.7;margin-top:17px}
+  .pain-grid,.service-grid,.project-grid,.steps,.catalogue-grid,.industry-grid,.faq-grid,.problem-grid,.business-grid{
+    grid-template-columns:1fr!important;
+  }
+  .problem-card,.business-card{min-height:0;padding:23px}
+  .problem-card h3{font-size:21px;margin:35px 0 9px}
+  .problem-card p,.business-card p{font-size:12px}
+
+  .automation-board{min-height:530px;border-radius:22px}
+  .board-label{left:18px;top:18px;font-size:8px}
+  .workflow-path{
+    inset:62px 15px 74px!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    justify-content:space-between!important;
+    gap:7px!important;
+  }
+  .wf-card{width:auto!important;padding:14px;border-radius:14px}
+  .wf-card b{font-size:16px}
+  .wf-card span{font-size:8px}
+  .wf-arrow{display:none!important}
+  .board-footer{left:17px;right:17px;bottom:17px;font-size:8px;gap:5px}
+
+  .cta-card{padding:34px 23px!important;border-radius:23px!important}
+  .cta-card h2{font-size:38px!important}
+
+  .contact-wrap{display:block}
+  .contact-copy h2{font-size:40px}
+  .contact-form{margin-top:28px}
+  .footer-inner{padding:28px 0}
+}
+
+/* Tiny screens: avoid any horizontal pressure. */
+@media (max-width:390px){
+  .hero{padding-top:48px}
+  h1{font-size:40px!important}
+  .hero-pills span:nth-child(n+3){display:none}
+  .actions{grid-template-columns:1fr}
+  .hero-visual{min-height:490px}
+  .portrait-card{width:82vw}
+  .location-card{top:300px!important}
+  .live-status{font-size:7px}
+  .section-head h2{font-size:34px!important}
+}
+
+/* HERO VISUAL OVERLAP FIX — V4 */
+.hero-visual{
+  overflow:visible;
+  min-width:0;
+}
+.portrait-card{
+  max-width:100%;
+}
+.live-automation{
+  max-width:calc(100% - 34px);
+}
+.floating-card{
+  max-width:210px;
+}
+
+/* Desktop: keep the workflow panel anchored to the lower edge of the portrait,
+   instead of drifting into the next section. */
+@media (min-width:701px){
+  .hero-visual{
+    min-height:560px;
+    align-self:center;
+  }
+  .portrait-card{
+    width:min(410px,72%);
+  }
+  .live-automation{
+    left:50%!important;
+    right:auto!important;
+    bottom:32px!important;
+    transform:translateX(-50%);
+    width:min(420px,82%)!important;
+  }
+  .location-card{
+    right:2%!important;
+    bottom:112px!important;
+  }
+}
+
+/* Mobile: image first, then workflow panel; no absolute panel can cover
+   the portrait or escape the hero. */
+@media (max-width:700px){
+  .hero-visual{
+    min-height:560px!important;
+    height:560px;
+    overflow:hidden;
+    margin-top:20px;
+  }
+  .portrait-card{
+    position:absolute!important;
+    top:0;
+    left:50%;
+    margin:0!important;
+    transform:translateX(-50%) rotate(1deg)!important;
+    width:min(78vw,340px)!important;
+    height:auto;
+  }
+  .location-card{
+    right:2%!important;
+    top:250px!important;
+    bottom:auto!important;
+    transform:scale(.78)!important;
+    transform-origin:right top;
+  }
+  .live-automation{
+    left:50%!important;
+    right:auto!important;
+    bottom:12px!important;
+    top:auto!important;
+    transform:translateX(-50%)!important;
+    width:calc(100% - 28px)!important;
+    max-width:none!important;
+    min-height:112px;
+  }
+}
+
+/* Very small phones */
+@media (max-width:390px){
+  .hero-visual{height:520px;min-height:520px!important}
+  .portrait-card{width:84vw!important}
+  .location-card{top:225px!important;transform:scale(.68)!important}
+  .live-automation{bottom:8px!important;min-height:106px}
+}
