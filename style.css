@@ -514,3 +514,58 @@ h3{font-weight:700}
 }
 .hero-visual .image-link,
 .portrait-card .image-link{height:100%}
+
+/* V8 — ONLY the two requested hero fixes */
+
+/* Live workflow: reset the unrelated global .n1/.n2/.n3/.n4 positioning
+   so all four workflow nodes stay inside the card and follow the flex layout. */
+.live-track .n1,
+.live-track .n2,
+.live-track .n3,
+.live-track .n4{
+  left:auto!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:auto!important;
+  position:relative!important;
+  flex:0 0 52px;
+}
+.live-track{
+  padding:0 2px;
+  margin:4px 2px;
+}
+.live-track .line{
+  left:28px;
+  right:28px;
+}
+.live-status{
+  margin-top:2px;
+}
+
+/* CTA arrow: slightly smaller, with cleaner breathing room. */
+.actions .btn.primary{
+  gap:10px;
+}
+.actions .btn.primary span{
+  font-size:12px;
+  line-height:1;
+  transform:translateY(-1px);
+}
+@media(max-width:700px){
+  .live-track .n1,
+  .live-track .n2,
+  .live-track .n3,
+  .live-track .n4{
+    flex-basis:43px;
+  }
+  .live-track .line{
+    left:22px;
+    right:22px;
+  }
+  .actions .btn.primary{
+    gap:9px;
+  }
+  .actions .btn.primary span{
+    font-size:11px;
+  }
+}
