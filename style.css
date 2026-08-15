@@ -385,3 +385,65 @@ h3{font-weight:700}
   .location-card{top:225px!important;transform:scale(.68)!important}
   .live-automation{bottom:8px!important;min-height:106px}
 }
+
+/* =========================
+   V5 — CONTACT + CLEAN HERO
+   ========================= */
+
+/* The contact section was accidentally overridden to a light background,
+   leaving white text almost invisible. Restore a deliberate high-contrast panel. */
+.contact-section{
+  background:
+    radial-gradient(circle at 85% 20%,rgba(49,92,255,.18),transparent 30%),
+    radial-gradient(circle at 15% 80%,rgba(67,235,204,.10),transparent 28%),
+    linear-gradient(135deg,#101827,#172642)!important;
+  color:#fff!important;
+}
+.contact-copy h2{
+  color:#fff!important;
+}
+.contact-copy h2 em{
+  color:#67e9d1!important;
+}
+.contact-copy>p:not(.eyebrow){
+  color:#c2cede!important;
+}
+.contact-direct a{
+  border-color:rgba(255,255,255,.13)!important;
+}
+.contact-direct span{
+  color:#9eacc0!important;
+}
+.contact-direct b{
+  color:#fff!important;
+}
+
+/* Clean portrait: remove decorative floating labels that were visually
+   sitting on top of the personal photo. The actual automation animation
+   remains as the intentional product visual. */
+.hero-visual .flow-card,
+.hero-visual .location-card,
+.hero-visual .hero-chip{
+  display:none!important;
+}
+
+/* Give the photograph breathing room now that the extra labels are gone. */
+.portrait-card{
+  box-shadow:0 28px 80px rgba(20,45,80,.16);
+}
+
+/* Keep the workflow panel below the portrait rather than covering the photo. */
+@media (min-width:701px){
+  .hero-visual .live-automation{
+    bottom:10px!important;
+  }
+}
+@media (max-width:700px){
+  .hero-visual{
+    min-height:545px!important;
+    height:545px!important;
+  }
+  .hero-visual .live-automation{
+    bottom:4px!important;
+  }
+}
