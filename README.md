@@ -52,54 +52,6 @@ Nothing here claims fake client results, fake revenue, fake case studies or fake
 const WEBHOOK_URL = "";
 ```
 
-When the Activepieces webhook is ready, put its URL there.
-
-The intended production flow is:
-
-Client form
-→ Activepieces webhook
-→ database
-→ AI lead processing
-→ private admin notification/bot
-→ admin approval
-→ availability check
-→ appointment record
-→ client notification/bot
-
-Supabase should remain the source of truth for leads, appointments and statuses.
-
-Render can be added later if custom server-side logic becomes necessary.
-
-## Images
-
-The assets folder contains selected user-supplied images:
-- portrait
-- BIVAN.EXE
-- lead intake form
-- automation workflow
-
-Some generic automation graphics supplied earlier were intentionally not used because they do not add much value to the actual client-facing website.
-
-## Performance note
-
-Animations are built mainly with `transform` and `opacity`, and scroll work is throttled with `requestAnimationFrame`.
-
-A website cannot honestly be guaranteed to run at 120 FPS on every device. The implementation is designed to avoid unnecessary main-thread work and keep the motion lightweight.
-
-## Deploying to GitHub Pages
-
-1. Create a GitHub repository.
-2. Put `index.html`, `style.css`, `script.js`, and `assets/` in the repository root.
-3. Enable GitHub Pages from the repository settings.
-4. Use the GitHub Pages URL while developing.
-5. Add a custom domain later when the site is ready for serious outreach.
-
-## Important
-
-Do not put private API keys, Supabase service-role keys, Activepieces secrets or admin credentials in this frontend.
-
-Those belong in the backend/automation environment.
-
 ## Owner
 
 Bivanjit Paul  
